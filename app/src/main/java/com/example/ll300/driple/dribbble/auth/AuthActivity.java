@@ -1,4 +1,4 @@
-package com.example.ll300.driple.dribbble.auth;
+package com.jiuzhang.guojing.dribbbo.dribbble.auth;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,7 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.example.ll300.driple.R;
+import com.jiuzhang.guojing.dribbbo.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,12 +24,9 @@ public class AuthActivity extends AppCompatActivity {
     public static final String KEY_URL = "url";
     public static final String KEY_CODE = "code";
 
-    @BindView(R.id.progress_bar)
-    ProgressBar progressBar;
-    @BindView(R.id.webview)
-    WebView webView;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    @BindView(R.id.progress_bar) ProgressBar progressBar;
+    @BindView(R.id.webview) WebView webView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,4 +87,5 @@ public class AuthActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

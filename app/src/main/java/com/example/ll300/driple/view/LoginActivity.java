@@ -1,15 +1,17 @@
-package com.example.ll300.driple;
+package com.jiuzhang.guojing.dribbbo.view;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.ll300.driple.dribbble.Dribbble;
-import com.example.ll300.driple.dribbble.DribbbleException;
-import com.example.ll300.driple.dribbble.auth.Auth;
-import com.example.ll300.driple.dribbble.auth.AuthActivity;
+import com.jiuzhang.guojing.dribbbo.R;
+import com.jiuzhang.guojing.dribbbo.dribbble.Dribbble;
+import com.jiuzhang.guojing.dribbbo.dribbble.DribbbleException;
+import com.jiuzhang.guojing.dribbbo.dribbble.auth.Auth;
+import com.jiuzhang.guojing.dribbbo.dribbble.auth.AuthActivity;
 
 import java.io.IOException;
 
@@ -17,29 +19,29 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity {
-    @BindView(R.id.activity_login_btn)
-    TextView loginbtn;
+
+    @BindView(R.id.activity_login_btn) TextView loginBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        //load access token from shared preference
+        // load access token from shared preference
         Dribbble.init(this);
 
-        if (Dribbble.isLoggedIn()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            loginbtn.setOnClickListener(new View.OnClickListener() {
+        if (!Dribbble.isLoggedIn()) {
+            loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View v) {
                     Auth.openAuthActivity(LoginActivity.this);
                 }
             });
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 
@@ -59,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
-                    } catch (IOException e) {
+                    } catch (IOException | DribbbleException e) {
                         e.printStackTrace();
                     }
                 }

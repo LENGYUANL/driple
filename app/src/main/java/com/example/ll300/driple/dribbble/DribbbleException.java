@@ -1,4 +1,4 @@
-package com.example.ll300.driple.dribbble;
+package com.jiuzhang.guojing.dribbbo.dribbble;
 
 public class DribbbleException extends Exception {
 

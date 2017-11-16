@@ -1,4 +1,4 @@
-package com.example.ll300.driple.dribbble.auth;
+package com.jiuzhang.guojing.dribbbo.dribbble.auth;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,7 +27,6 @@ public class Auth {
     private static final String KEY_SCOPE = "scope";
     private static final String KEY_ACCESS_TOKEN = "access_token";
 
-    // use yours
     private static final String CLIENT_ID = "3e2ff6216e7292996f2b3e930811eed3a61feb2d7fee271268030ef20207732b";
     private static final String CLIENT_SECRET = "49589747bfc25dcba9e1ae66558b515fe010e0b8cae2c15b10d82f706871fd24";
     private static final String SCOPE = "public+write";
@@ -35,7 +34,7 @@ public class Auth {
     private static final String URI_AUTHORIZE = "https://dribbble.com/oauth/authorize";
     private static final String URI_TOKEN = "https://dribbble.com/oauth/token";
 
-    public static final String REDIRECT_URI = "http://www.google.com";
+    public static final String REDIRECT_URI = "https://www.google.com";
 
     private static String getAuthorizeUrl() {
         String url = Uri.parse(URI_AUTHORIZE)
